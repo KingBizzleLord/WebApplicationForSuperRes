@@ -9,11 +9,42 @@
   
       <link href="/static/style.css" rel="stylesheet"  type="text/css"/>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 
+      <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+
+     <style>
+body, html {
+    height: 100%;
+    margin: 0;
+    
+}
+
+h1, html {
+    font-family: 'Sofia';font-size: 110px;
+}
+
+p, html {
+    font-family: 'Sofia';font-size: 32px;
+}
+
+
+
+.bg {
+    /* The image used */
+    background-image: url("../static/M43_beletsky.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
   
 </head>
 
-<body>
+<body class="bg">
  <form action="/upload" method="post" enctype="multipart/form-data" >
   <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <div class="file-upload">
@@ -22,7 +53,7 @@
   <div class="image-upload-wrap">
     <input class="file-upload-input" type="file" name="image" onchange="readURL(this);" accept="image/*" />
     <div class="drag-text">
-      <h3>Drag and drop a file or select add Image</h3>
+      <h3>Drag and drop a file to upload</h3>
     </div>
   </div>
   <div class="file-upload-content">
@@ -38,6 +69,9 @@
   
 
     <script  src="/static/index.js"></script>
+
+    <center><font color="white"><h1 color="white">Super Resolution</h1></font></center>
+    <center><font color="white"><p color="white">Upload to see the magic</p></font></center>
 
 
 
