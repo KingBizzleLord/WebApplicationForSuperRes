@@ -1,11 +1,9 @@
 import os
 import PIL
 from flask import Flask, render_template, request
-import flask_resize
 from PIL import Image
 from io import BytesIO
-
-
+from superres import get_dataset, test, clean_files
 
 app = Flask(__name__)
 
@@ -16,7 +14,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def main():
     return render_template('index.html')
 
-
 @app.route('/upload', methods=['POST'])
 def upload_file():
     file = request.files['image']
@@ -26,9 +23,13 @@ def upload_file():
    
     file.save(f)
     img = Image.open(f)
-    img = img.resize((basewidth, baseheight), PIL.Image.ANTIALIAS)
-    img.save('./uploads/resized_image.jpg')
 
+    dataset = get_dataset()
+    clean_files()
+    try:
+        test(dataset)
+    except Exception as e:
+        print(e)
     return render_template('output.html')
 
 # @app.route('/showOutput', methods=['POST', 'GET'])
